@@ -20,7 +20,7 @@ jobs:
     - name: Configurar Python 3.9.2
       uses: actions/setup-python@v5
       with:
-        python-version: '3.9.2'  # Especifica la versión de Python que necesitas
+        python-version: '3.9'  # Especifica la versión de Python que necesitas
 
     - name: Instalar Dependencias (si las hay)
       # Asume que tienes un archivo requirements.txt. Si no lo tienes, puedes eliminar este paso.
@@ -28,6 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         # pip install -r requirements.txt  # Descomenta si tienes dependencias externas
 
-    - name: 🚀 Ejecutar el Script Principal
+    - name: Ejecutar el Script Principal
       # Asegúrate de que tu archivo principal se llama main.py o ajusta el nombre
       run: python main.py
