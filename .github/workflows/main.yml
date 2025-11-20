@@ -1,0 +1,33 @@
+name: Flujo de Trabajo de Python
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cuando se suben cambios a la rama 'main'
+  pull_request:
+    branches:
+      - main  # Opcional: También se ejecuta cuando se crea o actualiza un Pull Request a 'main'
+  workflow_dispatch:  # Permite ejecutar manualmente el flujo de trabajo desde la interfaz de GitHub
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest  # Se ejecuta en un runner (servidor virtual) de Ubuntu
+
+    steps:
+    - name: Checkout del Código
+      uses: actions/checkout@v4  # Descarga tu repositorio en el runner
+
+    - name: Configurar Python 3.9.2
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9.2'  # Especifica la versión de Python que necesitas
+
+    - name: Instalar Dependencias (si las hay)
+      # Asume que tienes un archivo requirements.txt. Si no lo tienes, puedes eliminar este paso.
+      run: |
+        python -m pip install --upgrade pip
+        # pip install -r requirements.txt  # Descomenta si tienes dependencias externas
+
+    - name: 🚀 Ejecutar el Script Principal
+      # Asegúrate de que tu archivo principal se llama main.py o ajusta el nombre
+      run: python main.py
